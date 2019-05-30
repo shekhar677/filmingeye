@@ -1,0 +1,463 @@
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/preflight";
+ */
+@tailwind preflight;
+
+/**
+ * This injects any component classes registered by plugins.
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/components";
+ */
+@tailwind components;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "components/buttons";
+ * @import "components/forms";
+ */
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/utilities";
+ */
+
+ /* custom components */
+
+ /* custom font */
+ @font-face {
+  font-family: mistral;
+  src: url('assets/vendor/mistral.TTF');
+}
+
+ /* menu-links component */
+ .menu-link {
+   @apply no-underline text-white text-base p-3 block transition-color transition select-none;
+ }
+ .menu-link:hover {
+  @apply text-fe-red;
+ }
+
+ /* play and youtube button */
+ .play-btn {
+   @apply no-underline text-fe-black uppercase text-xs p-2 px-6 border border-grey rounded-full transition transition-bg;
+ }
+ .play-btn:hover {
+   @apply shadow bg-fe-red text-white
+ }
+
+ /* custom styles */
+
+ .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.02);
+ }
+
+ .hover-red > span {
+  transition: all 0.3s;
+ }
+ .hover-red:hover > span, .hover-red:active > span {
+    color: #CE214A;
+    text-decoration: underline;
+ }
+
+ /* preloader styles starts */
+ body.preloader-site {
+  overflow: hidden;
+}
+ .preloader ul {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+.preloader ul li {
+  list-style-type: none;
+  width: 7px;
+  height: 25px;
+  background: #CE214A;
+  margin: 0 4px;
+  animation: loader .8s infinite alternate;
+}
+
+/* line loader animation */
+@keyframes loader {
+  0% {
+    transform: scaleY(1);
+  }
+  25% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+  75% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(2.5);
+  }
+}
+
+.preloader ul li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.preloader ul li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.preloader ul li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.preloader ul li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.preloader ul li:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.preloader ul li:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.preloader ul li:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.preloader ul li:nth-child(8) {
+  animation-delay: 0.8s;
+}
+ /* preloader styles ends */
+
+ /* scroll progress shadow color and blur */
+ .scrollgress__progress {
+  box-shadow: #CE214A 0px 0px 10px 1px;
+ }
+ .scrollgress {
+   z-index: 100;
+ }
+
+ /* line after text */
+ .line-after::after {
+  content: '';
+  display: block;
+  position: relative;
+  left: 0;
+  width: 13%;
+  top: 13px;
+  height: 4px;
+  background: red;
+}
+
+ /* biggest font behind */
+ .font-decor {
+  opacity: 0.1;
+  font-size: 13rem;
+  white-space: nowrap;
+  text-align: center;
+ }
+
+ /* move to button pulse animation */
+ .scroll-down-anim {
+  -webkit-animation: scroll-pulse 2s infinite;
+  animation: scroll-pulse 2s infinite;
+ }
+ @-webkit-keyframes scroll-pulse {
+   0% {
+     -webkit-transform: translate(0, 0);
+     transform: translate(0, 0);
+   }
+   50% {
+     -webkit-transform: translate(0, 10px);
+     transform: translate(0,10px)
+   }
+   100% {
+     -webkit-transform: translate(0, 0);
+     transform: translate(0, 0);
+   }
+ }
+
+ @keyframes scroll-pulse {
+   0% {
+     -webkit-transform: translate(0, 0);
+     transform: translate(0, 0);
+   }
+   50% {
+     -webkit-transform: translate(0, 10px);
+     transform: translate(0, 10px);
+   }
+   100% {
+     -webkit-transform: translate(0, 0);
+     transform: translate(0, 0);
+   }
+ }
+
+ /* pulse animation for play button */
+ .pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+}
+
+ @-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+/* modal styles */
+.modal-invisible {
+  visibility: hidden;
+  opacity: 0;
+  z-index: -5;
+}
+.modal-visible {
+  visibility: visible;
+  opacity: 1;
+  z-index: 100;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  animation-duration: 0.7s;
+}
+
+/* ratio-box for square divs */
+.ratio-box::before {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+
+/* reordering box on mobile devices */
+@media only screen and (max-width:991px) {
+  .order-1 {
+    order: 1;
+  }
+}
+@media only screen and (max-width:768px) {
+  .order-1 {
+    order: 1;
+  }
+}
+
+/* fadeInUP animation */
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* text selection color change */
+::-moz-selection { background: #F191A8; }
+::selection { background: #F191A8; }
+
+ /* menu btn animation */
+#bar1,
+#bar2,
+#bar3 {
+  transition-property: x, width;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.72, 0.4, 0, 0.89);
+}
+#bar1.active,
+#bar2.active,
+#bar3.active {
+  x: 0;
+  transition-property: x, width;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.72, 0.4, 0, 0.89);
+}
+
+/* menu-panel list items animation */
+.menu-panel li {
+  transform: translateX(100%);
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 0.4s;
+}
+.menu-panel li.open-panel {
+  transform: translateX(0%);
+  opacity: 1;
+  transition-property: opacity, transform;
+  transition-duration: 0.4s;
+}
+
+/* footer bg-image */
+.footer-bg {
+  background-image: url("../main/assets/images/footer.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* image handeling */
+.cover {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* transition styles */
+
+.transition {
+  transition-duration: .25s;
+}
+  
+.transition-slower {
+  transition-duration: .75s;
+}
+  
+.transition-slow {
+  transition-duration: .5s;
+}
+  
+.transition-fast {
+  transition-duration: .15s;
+}
+  
+.transition-faster {
+  transition-duration: .075s;
+}
+  
+/* .transition-property-none {
+  transition-property: none;
+} */
+  
+.transition-bg {
+  transition-property: background;
+}
+
+.transition-height {
+  transition-property: height;
+}
+
+.transition-border {
+  transition-property: border;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+}
+
+.transition-transform {
+  transition-property: transform;
+}
+  
+.transition-color {
+  transition-property: color;
+}
+  
+.transition-shadow {
+  transition-property: box-shadow;
+}
+  
+.transition-ease {
+  transition-timing-function: ease;
+}
+  
+.transition-ease-in {
+  transition-timing-function: ease-in;
+}
+  
+.transition-ease-out {
+  transition-timing-function: ease-out;
+}
+  
+.transition-ease-in-out {
+  transition-timing-function: ease-in-out;
+}
+
+@tailwind utilities;
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "utilities/background-patterns";
+ * @import "utilities/skew-transforms";
+ */
